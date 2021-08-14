@@ -26,4 +26,4 @@ arr=[int(sys.stdin.readline()) for _ in range(n)]
 arr.sort()
 
 result=0
-binary_search(1,arr[-1]-arr[0])
+binary_search(1,arr[-1]-arr[0]) 
