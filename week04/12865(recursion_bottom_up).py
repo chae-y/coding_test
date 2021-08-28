@@ -22,4 +22,4 @@ for _ in range(n):
     w, c = map(int, sys.stdin.readline().split())
     arr.append([w, c])
 
-print(go(0, 0))
+print(go(0, 0)) 
