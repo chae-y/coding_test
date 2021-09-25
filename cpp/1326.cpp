@@ -33,7 +33,7 @@ int main(){
             return 0;
         }
         int next =now;
-        while(next+arr[now]<=b){
+        while(next+arr[now]<n){
             next+=arr[now];
             if(!visited[next]){
                 visited[next]=1;
@@ -41,7 +41,7 @@ int main(){
             }
         }
         next = now;
-        while(next-arr[now]>0){
+        while(next-arr[now]>=0){
             next-=arr[now];
             if(!visited[next]){
                 visited[next]=1;
