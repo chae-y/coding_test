@@ -1,13 +1,17 @@
 #include<iostream>
+#include<list>
 
 using namespace std;
 
-string s;
-int cursor;
 
 int main(){
+    string s;
     cin>>s;
-    cursor = s.size();
+    list<char> l;
+    for(int i=0; i<s.size(); i++){
+		l.push_back(s.at(i));
+	}
+    auto cursor = l.end();
     int n;
     cin>>n;
     for(int i=0; i<n; i++){
@@ -16,25 +20,18 @@ int main(){
         if(temp[0] == 'P'){
             char c;
             cin>>c;
-            if(cursor<s.size())
-                s = s.substr(0,cursor+1)+c + s.substr(cursor+1) ;
-            else
-                s = s.substr(0,cursor+1)+c;
-        }if(temp[0] == 'L'){
-            cursor-=1;
-            if(cursor<0)    cursor = 0;
-        }if(temp[0] == 'D'){
-            cursor+=1;
-            if(cursor>s.size())   cursor=s.size();
+            l.insert(cursor, c);
+        }else if(temp[0] == 'L'){
+            if(cursor!= l.begin()) cursor--;
+        }else if(temp[0] == 'D'){
+            if(cursor!= l.end()) cursor++;
         }else{
-            if(cursor==0) continue;
-            if(cursor<s.size())
-                s = s.substr(0,cursor) + s.substr(cursor+1) ;
-            else
-                s = s.substr(0,cursor);
+            if(cursor!=l.begin())
+				cursor = l.erase(--cursor);
         }
-        cout<<s<<endl;
     }
-    cout<<s;
+    for(auto &x:l){
+        cout<<x;
+    }
     return 0;
 }
