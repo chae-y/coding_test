@@ -1,0 +1,38 @@
+function change(str){
+    let result = str.replace(/C\#/g,"1").replace(/D\#/g,"2").replace(/F\#/g,"3").replace(/G\#/g,"4").replace(/A\#/g,"5");
+    return result;
+}
+
+function timeCheck(t1, t2){
+    let time1 = parseInt(t1[0]+t1[1])*60+parseInt(t1[3]+t1[4]);
+    let time2 = parseInt(t2[0]+t2[1])*60+parseInt(t2[3]+t2[4]);
+    return time1-time2;
+}
+
+function melody(s, time){
+    let tmp="";
+    for(let i=0; i<time; i++){
+        tmp+=s[i%s.length];
+    }
+    return tmp;
+}
+
+function solution(m, musicinfos) {
+    var answer = '';
+    let resultTime=0;
+    m = change(m);
+    for(let i=0; i<musicinfos.length; i++){
+        let info = musicinfos[i].split(',');
+        let time = timeCheck(info[1],info[0]);
+        info[3] = change(info[3]);
+        let mel = melody(info[3],time);
+        if(mel.includes(m)){
+            if(resultTime<time){
+                resultTime=time;
+                answer = info[2];
+            }
+        }
+    }
+    if(answer==="") return "(None)";
+    return answer;
+}
