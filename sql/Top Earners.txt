@@ -1,0 +1,4 @@
+select max(employee.salary*employee.months), count(*)
+from employee
+inner join (select max(salary*months) as "maxSal"
+                from employee) e2 on e2.maxSal = employee.salary*employee.months
