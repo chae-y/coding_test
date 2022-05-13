@@ -1,0 +1,3 @@
+select SUM(population)/COUNT(*)
+from city
+where district = "California"
