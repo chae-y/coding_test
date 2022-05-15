@@ -1,0 +1,4 @@
+select if(g.grade<8,"NULL",s.name), g.grade, s.marks 
+from students s
+left join grades g on if(s.marks=100,10,ceil((s.marks+1)/10)) = g.grade  
+order by g.grade desc, s.name, s.marks
