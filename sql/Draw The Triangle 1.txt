@@ -1,0 +1,8 @@
+WITH RECURSIVE R AS(
+    select 20 as N
+    UNION
+    select n-1 from R where n>0
+)
+
+select repeat("* ", n)
+from R;
